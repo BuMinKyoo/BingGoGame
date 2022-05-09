@@ -1,0 +1,161 @@
+﻿<Window x:Class="BingGoClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BingGoClient"
+        mc:Ignorable="d"
+        
+        Title="MainWindow" Height="705" Width="570" ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Client" Margin="15 5 5 5" FontWeight="Black"/>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="15 0 0 0">
+            <TextBlock Text="IP" Margin="5"/>
+            <TextBox Width="100" Margin="0 5 5 5" Text="127.0.0.1"/>
+            <TextBlock Text="PORT" Margin="5"/>
+            <TextBox Width="50" Margin="0 5 5 5" Text="7000"/>
+            <Button x:Name="btnClientStart_btn" Content="서비스 시작" Width="100" Margin="5" Click="btnClientStart" IsEnabled="False" ToolTipService.ShowOnDisabled="True">
+                <Button.ToolTip>
+                    <TextBlock Text="숫자 입력을 완료하면 활성화 됩니다"/>
+                </Button.ToolTip>
+            </Button>
+            <Button Content="서비스 중지" Width="100" Margin="5"/>
+        </StackPanel>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <UniformGrid Grid.RowSpan="2" Width="430" Height="430" Margin="15">
+                <Button x:Name="number1_btn" Click="number1_btn_Click" IsEnabled="False"/>
+                <Button x:Name="number2_btn" Click="number2_btn_Click" IsEnabled="False"/>
+                <Button x:Name="number3_btn" Click="number3_btn_Click" IsEnabled="False"/>
+                <Button x:Name="number4_btn" Click="number4_btn_Click" IsEnabled="False"/>
+                <Button x:Name="number5_btn" Click="number5_btn_Click" IsEnabled="False"/>
+                <Button x:Name="number6_btn" Click="number6_btn_Click" IsEnabled="False"/>
+                <Button x:Name="number7_btn" Click="number7_btn_Click" IsEnabled="False"/>
+                <Button x:Name="number8_btn" Click="number8_btn_Click" IsEnabled="False"/>
+                <Button x:Name="number9_btn" Click="number9_btn_Click" IsEnabled="False"/>
+                <Button x:Name="number10_btn" Click="number10_btn_Click" IsEnabled="False"/>
+                <Button x:Name="number11_btn" Click="number11_btn_Click" IsEnabled="False"/>
+                <Button x:Name="number12_btn" Click="number12_btn_Click" IsEnabled="False"/>
+                <Button x:Name="number13_btn" Click="number13_btn_Click" IsEnabled="False"/>
+                <Button x:Name="number14_btn" Click="number14_btn_Click" IsEnabled="False"/>
+                <Button x:Name="number15_btn" Click="number15_btn_Click" IsEnabled="False"/>
+                <Button x:Name="number16_btn" Click="number16_btn_Click" IsEnabled="False"/>
+            </UniformGrid>
+
+            <StackPanel Grid.Column="1" Margin="0 15 10 10">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBlock Text="1."/>
+                    <TextBox x:Name="number1_tb" Width="50" Margin="3 0 0 7" MaxLength="2"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBlock Text="2."/>
+                    <TextBox x:Name="number2_tb" Width="50" Margin="3 0 0 7" MaxLength="2"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBlock Text="3."/>
+                    <TextBox x:Name="number3_tb" Width="50" Margin="3 0 0 7" MaxLength="2"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBlock Text="4."/>
+                    <TextBox x:Name="number4_tb" Width="50" Margin="3 0 0 7" MaxLength="2"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBlock Text="5."/>
+                    <TextBox x:Name="number5_tb" Width="50" Margin="3 0 0 7" MaxLength="2"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBlock Text="6."/>
+                    <TextBox x:Name="number6_tb" Width="50" Margin="3 0 0 7" MaxLength="2"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBlock Text="7."/>
+                    <TextBox x:Name="number7_tb" Width="50" Margin="3 0 0 7" MaxLength="2"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBlock Text="8."/>
+                    <TextBox x:Name="number8_tb" Width="50" Margin="3 0 0 7" MaxLength="2"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBlock Text="9."/>
+                    <TextBox x:Name="number9_tb" Width="50" Margin="3 0 0 7" MaxLength="2"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="10."/>
+                    <TextBox x:Name="number10_tb" Width="50" Margin="3 0 0 7" MaxLength="2"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="11."/>
+                    <TextBox x:Name="number11_tb" Width="50" Margin="3 0 0 7" MaxLength="2"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="12."/>
+                    <TextBox x:Name="number12_tb" Width="50" Margin="3 0 0 7" MaxLength="2"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="13."/>
+                    <TextBox x:Name="number13_tb" Width="50" Margin="3 0 0 7" MaxLength="2"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="14."/>
+                    <TextBox x:Name="number14_tb" Width="50" Margin="3 0 0 7" MaxLength="2"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="15."/>
+                    <TextBox x:Name="number15_tb" Width="50" Margin="3 0 0 7" MaxLength="2"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="16."/>
+                    <TextBox x:Name="number16_tb" Width="50" Margin="3 0 0 7" MaxLength="2"/>
+                </StackPanel>
+
+                <Button x:Name="btnNumberSend_btn" Content="숫자전송" Margin="3 0 0 7" Click="btnNumberSend"/>
+            </StackPanel>
+
+        </Grid>
+
+        <Grid Grid.Row="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <ListView x:Name="chattingMessage_lv" Grid.Row="0" Width="500" Height="100"></ListView>
+            <StackPanel Grid.Row="1" Orientation="Horizontal" Width="500" Height="30">
+                <TextBox x:Name="chattingData_tb" Width="450"/>
+                <Button Width="50" Content="전송" Click="btnchattingDataSend"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
