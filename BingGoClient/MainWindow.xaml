@@ -41,22 +41,22 @@
             </Grid.RowDefinitions>
 
             <UniformGrid Grid.RowSpan="2" Width="430" Height="430" Margin="15">
-                <Button x:Name="number1_btn" Click="number1_btn_Click" IsEnabled="False"/>
-                <Button x:Name="number2_btn" Click="number2_btn_Click" IsEnabled="False"/>
-                <Button x:Name="number3_btn" Click="number3_btn_Click" IsEnabled="False"/>
-                <Button x:Name="number4_btn" Click="number4_btn_Click" IsEnabled="False"/>
-                <Button x:Name="number5_btn" Click="number5_btn_Click" IsEnabled="False"/>
-                <Button x:Name="number6_btn" Click="number6_btn_Click" IsEnabled="False"/>
-                <Button x:Name="number7_btn" Click="number7_btn_Click" IsEnabled="False"/>
-                <Button x:Name="number8_btn" Click="number8_btn_Click" IsEnabled="False"/>
-                <Button x:Name="number9_btn" Click="number9_btn_Click" IsEnabled="False"/>
-                <Button x:Name="number10_btn" Click="number10_btn_Click" IsEnabled="False"/>
-                <Button x:Name="number11_btn" Click="number11_btn_Click" IsEnabled="False"/>
-                <Button x:Name="number12_btn" Click="number12_btn_Click" IsEnabled="False"/>
-                <Button x:Name="number13_btn" Click="number13_btn_Click" IsEnabled="False"/>
-                <Button x:Name="number14_btn" Click="number14_btn_Click" IsEnabled="False"/>
-                <Button x:Name="number15_btn" Click="number15_btn_Click" IsEnabled="False"/>
-                <Button x:Name="number16_btn" Click="number16_btn_Click" IsEnabled="False"/>
+                <Button x:Name="number1_btn" Click="number_btn_Click" IsEnabled="False"/>
+                <Button x:Name="number2_btn" Click="number_btn_Click" IsEnabled="False"/>
+                <Button x:Name="number3_btn" Click="number_btn_Click" IsEnabled="False"/>
+                <Button x:Name="number4_btn" Click="number_btn_Click" IsEnabled="False"/>
+                <Button x:Name="number5_btn" Click="number_btn_Click" IsEnabled="False"/>
+                <Button x:Name="number6_btn" Click="number_btn_Click" IsEnabled="False"/>
+                <Button x:Name="number7_btn" Click="number_btn_Click" IsEnabled="False"/>
+                <Button x:Name="number8_btn" Click="number_btn_Click" IsEnabled="False"/>
+                <Button x:Name="number9_btn" Click="number_btn_Click" IsEnabled="False"/>
+                <Button x:Name="number10_btn" Click="number_btn_Click" IsEnabled="False"/>
+                <Button x:Name="number11_btn" Click="number_btn_Click" IsEnabled="False"/>
+                <Button x:Name="number12_btn" Click="number_btn_Click" IsEnabled="False"/>
+                <Button x:Name="number13_btn" Click="number_btn_Click" IsEnabled="False"/>
+                <Button x:Name="number14_btn" Click="number_btn_Click" IsEnabled="False"/>
+                <Button x:Name="number15_btn" Click="number_btn_Click" IsEnabled="False"/>
+                <Button x:Name="number16_btn" Click="number_btn_Click" IsEnabled="False"/>
             </UniformGrid>
 
             <StackPanel Grid.Column="1" Margin="0 15 10 10">
