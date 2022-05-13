@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:BingGoClient"
         mc:Ignorable="d"
         
-        Title="MainWindow" Height="705" Width="570" ResizeMode="NoResize">
+        Title="MainWindow" Height="685" Width="570" ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -27,7 +27,7 @@
                     <TextBlock Text="숫자 입력을 완료하면 활성화 됩니다"/>
                 </Button.ToolTip>
             </Button>
-            <Button Content="서비스 중지" Width="100" Margin="5"/>
+            <Button x:Name="btnClientEnd_btn" Content="서비스 중지" Width="100" Margin="5" Click="btnClientEnd_btn_Click" IsEnabled="False"/>
         </StackPanel>
 
         <Grid Grid.Row="2">
@@ -38,10 +38,11 @@
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
+                <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <UniformGrid Grid.RowSpan="2" Width="430" Height="430" Margin="15">
-                <Button x:Name="number1_btn" Click="number_btn_Click" IsEnabled="False"/>
+            <Grid x:Name="Binggogrid" Grid.RowSpan="3" Width="430" Height="430" Margin="15">
+<!--<Button x:Name="number1_btn" Click="number_btn_Click" IsEnabled="False"/>
                 <Button x:Name="number2_btn" Click="number_btn_Click" IsEnabled="False"/>
                 <Button x:Name="number3_btn" Click="number_btn_Click" IsEnabled="False"/>
                 <Button x:Name="number4_btn" Click="number_btn_Click" IsEnabled="False"/>
@@ -56,11 +57,11 @@
                 <Button x:Name="number13_btn" Click="number_btn_Click" IsEnabled="False"/>
                 <Button x:Name="number14_btn" Click="number_btn_Click" IsEnabled="False"/>
                 <Button x:Name="number15_btn" Click="number_btn_Click" IsEnabled="False"/>
-                <Button x:Name="number16_btn" Click="number_btn_Click" IsEnabled="False"/>
-            </UniformGrid>
+                <Button x:Name="number16_btn" Click="number_btn_Click" IsEnabled="False"/>-->
+            </Grid>
 
-            <StackPanel Grid.Column="1" Margin="0 15 10 10">
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <StackPanel x:Name="Binggonumberinputtext" Grid.Column="1" Grid.RowSpan="2" Margin="0 15 10 10">
+<!--<StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <TextBlock Text="1."/>
                     <TextBox x:Name="number1_tb" Width="50" Margin="3 0 0 7" MaxLength="2"/>
                 </StackPanel>
@@ -138,9 +139,12 @@
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="16."/>
                     <TextBox x:Name="number16_tb" Width="50" Margin="3 0 0 7" MaxLength="2"/>
-                </StackPanel>
+                </StackPanel>-->
+            </StackPanel>
 
+            <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Vertical" Margin="0 0 10 10">
                 <Button x:Name="btnNumberSend_btn" Content="숫자전송" Margin="3 0 0 7" Click="btnNumberSend"/>
+                <Button x:Name="btnNumverrendom_btn" Content="랜덤" Margin="3 0 0 7" Click="btnNumverrendom_btn_Click"/>
             </StackPanel>
 
         </Grid>
@@ -151,7 +155,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <ListView x:Name="chattingMessage_lv" Grid.Row="0" Width="500" Height="100"></ListView>
+            <ListView x:Name="chattingMessage_lv" Grid.Row="0" Width="500" Height="70"></ListView>
             <StackPanel Grid.Row="1" Orientation="Horizontal" Width="500" Height="30">
                 <TextBox x:Name="chattingData_tb" Width="450"/>
                 <Button Width="50" Content="전송" Click="btnchattingDataSend"/>

@@ -31,7 +31,7 @@ namespace BingGo
 
         List<TcpClient> ClientList = new List<TcpClient>();
 
-        //서버 시작
+        // 서버 시작
         TcpClient client = null;
         async private void btnServerStart(object sender, RoutedEventArgs e)
         {
@@ -59,7 +59,7 @@ namespace BingGo
             }));
         }
 
-        //Receive
+        // Receive
         async private void OnReceive(TcpClient tcpclient)
         {
             await Task.Run(new Action(() =>
@@ -70,7 +70,7 @@ namespace BingGo
 
                     string getMessage = "";
 
-                    //강제 종료시 에러 잡기
+                    // 강제 종료시 에러 Catch
                     try
                     {
                         int nbyte = tcpclient.GetStream().Read(buffer, 0, buffer.Length);
@@ -81,27 +81,35 @@ namespace BingGo
 
                     }
 
-                    // Imformation_lv에 데이터 추가
-                    this.Dispatcher.BeginInvoke(new Action(() =>
+                    // Client를 종료시 아무것도 없는 텍스트 송부 제한
+                    if(getMessage != "")
                     {
-                        Imformation_lv.Items.Add(getMessage);
-                    }));
+                        this.Dispatcher.BeginInvoke(new Action(() =>
+                        {
+                            Imformation_lv.Items.Add(getMessage);
+                        }));
 
-                    // 받은 데이터 클라이언트로 재송부
-                    foreach (var client in ClientList)
+                        // 받은 데이터 클라이언트로 재송부
+                        foreach (var client in ClientList)
+                        {
+                            byte[] buffer2 = new byte[getMessage.Length];
+                            buffer2 = Encoding.Default.GetBytes(getMessage);
+
+                            // 강제 종료시 에러 Catch
+                            try
+                            {
+                                client.GetStream().Write(buffer2, 0, buffer2.Length);
+                            }
+                            catch (Exception ex)
+                            {
+
+                            }
+                        }
+                    }
+                    // Client를 종료시 클라이언트 객체 제거
+                    if (getMessage == "")
                     {
-                        byte[] buffer2 = new byte[getMessage.Length];
-                        buffer2 = Encoding.Default.GetBytes(getMessage);
-
-                        //강제 종료시 에러 잡기
-                        try
-                        {
-                            client.GetStream().Write(buffer2, 0, getMessage.Length);
-                        }
-                        catch (Exception ex)
-                        {
-
-                        }
+                        ClientList.Remove(tcpclient);
                     }
                 }
             }));
