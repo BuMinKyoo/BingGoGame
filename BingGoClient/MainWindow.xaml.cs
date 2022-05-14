@@ -29,13 +29,12 @@ namespace BingGoClient
         public MainWindow()
         {
             InitializeComponent();
-            individual_list();
+            Individual_list();
         }
 
-        
-        private void individual_list()
+        // 빙고판생성
+        private void Individual_list()
         {
-            // 빙고판생성
             for (int i = 0; i < 4; i++)
             {
                 Binggogrid.ColumnDefinitions.Add(new ColumnDefinition());
@@ -73,7 +72,7 @@ namespace BingGoClient
 
                 TextBox textBox = new TextBox();
                 textBox.Width = 50;
-                textBox.Margin = new Thickness(3, 0, 0, 7);
+                textBox.Margin = new Thickness(3, 0, 0, 3);
                 textBox.MaxLength = 2;
                 stackPanel.Children.Add(textBox);
 
@@ -116,6 +115,99 @@ namespace BingGoClient
             //textBox_list.Add(number15_tb);
             //textBox_list.Add(number16_tb);
             #endregion
+
+        }
+
+        // 빙고점수
+        private void BingoCount()
+        {
+            if (tcpclient != null)
+            {
+                int binggocount = 0;
+                this.Dispatcher.BeginInvoke(new Action(() =>
+                {
+                    for (int i = 0; i < 4; i++)
+                    {
+                        bool bCheck = false;
+                        for (int j = 0; j < 4; j++)
+                        {
+                            var btn = Binggogrid.Children.Cast<Button>().FirstOrDefault(x => Grid.GetColumn(x) == i && Grid.GetRow(x) == j);
+                            if (bCheck == false && btn.IsEnabled == true)
+                            {
+                                bCheck = true;
+                            }
+                        }
+
+                        if (bCheck == false)
+                        {
+                            binggocount++;
+                        }
+                    }
+                    Debug.WriteLine("1 : " + binggocount);
+
+                    for (int i = 0; i < 4; i++)
+                    {
+                        bool bCheck = false;
+                        for (int j = 0; j < 4; j++)
+                        {
+                            var btn = Binggogrid.Children.Cast<Button>().FirstOrDefault(x => Grid.GetColumn(x) == j && Grid.GetRow(x) == i);
+                            if (bCheck == false && btn.IsEnabled == true)
+                            {
+                                bCheck = true;
+                            }
+                        }
+
+                        if (bCheck == false)
+                        {
+                            binggocount++;
+                        }
+                    }
+                    Debug.WriteLine("2 : " + binggocount);
+
+                    bool bCheckxy = false;
+                    for (int i = 0; i < 4; i++)
+                    {
+                        var btn = Binggogrid.Children.Cast<Button>().FirstOrDefault(x => Grid.GetColumn(x) == i && Grid.GetRow(x) == i);
+                        if (bCheckxy == false && btn.IsEnabled == true)
+                        {
+                            bCheckxy = true;
+                        }
+                    }
+
+                    if (bCheckxy == false)
+                    {
+                        binggocount++;
+                    }
+                    Debug.WriteLine("3 : " + binggocount);
+
+
+                    int gridx = 0;
+                    int gridy = Binggogrid.ColumnDefinitions.Count - 1;
+                    bool bCheckyx = false;
+                    while (gridx < 4 && 0 < gridy)
+                    {
+                        var btn = Binggogrid.Children.Cast<Button>().FirstOrDefault(x => Grid.GetColumn(x) == gridx && Grid.GetRow(x) == gridy);
+                        {
+                            if (bCheckyx == false && btn.IsEnabled == true)
+                            {
+                                bCheckyx = true;
+                            }
+                        }
+
+                        gridx++;
+                        gridy--;
+                    }
+
+                    if (bCheckyx == false)
+                    {
+                        binggocount++;
+                    }
+                    Debug.WriteLine("4 : " + binggocount);
+
+                    BinggoCount_tb.Text = binggocount.ToString() + " : " + "빙고";
+
+                }));
+            }
         }
 
         // 클라이언트 접속
@@ -141,17 +233,19 @@ namespace BingGoClient
             ReceiveData();
         }
 
+
         // 클라이언트 End
         private void btnClientEnd_btn_Click(object sender, RoutedEventArgs e)
         {
             tcpclient.Client.Disconnect(false);
 
-            // 서비스 중지 후 (서비스 실행 버튼 활성화 / 서비스 중지 버튼 비활성화 / 숫자전송 버튼 활성화 / 랜덤버튼 활성화 / 채팅 Items 모두 제거 / 빙고판 버튼 비활성화 )
+            // 서비스 중지 후 (서비스 실행 버튼 활성화 / 서비스 중지 버튼 비활성화 / 숫자전송 버튼 활성화 / 랜덤버튼 활성화 / 채팅 Items 모두 제거 / 빙고점수 초기화 / 빙고판 버튼 비활성화 )
             btnClientStart_btn.IsEnabled = true;
             btnClientEnd_btn.IsEnabled = false;
             btnNumberSend_btn.IsEnabled = true;
             btnNumverrendom_btn.IsEnabled = true;
             chattingMessage_lv.Items.Clear();
+            BinggoCount_tb.Text = "0 : 빙고";
 
             foreach (var button in button_list)
             {
@@ -200,6 +294,8 @@ namespace BingGoClient
                     buffer = Encoding.Default.GetBytes(number_btn_Send_Data);
                     tcpclient.GetStream().Write(buffer, 0, buffer.Length);
                 }));
+
+                BingoCount();
             }));
         }
         #endregion
@@ -362,6 +458,8 @@ namespace BingGoClient
                                 }
                             }));
                         }
+
+                        BingoCount();
                     }
                 }));
             }

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:BingGoClient"
         mc:Ignorable="d"
         
-        Title="MainWindow" Height="685" Width="570" ResizeMode="NoResize">
+        Title="MainWindow" Height="655" Width="560" ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -28,6 +28,7 @@
                 </Button.ToolTip>
             </Button>
             <Button x:Name="btnClientEnd_btn" Content="서비스 중지" Width="100" Margin="5" Click="btnClientEnd_btn_Click" IsEnabled="False"/>
+            <TextBlock x:Name="BinggoCount_tb" Margin="5" Text="0 : 빙고" Width="60" TextAlignment="Right"/>
         </StackPanel>
 
         <Grid Grid.Row="2">
@@ -41,7 +42,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <Grid x:Name="Binggogrid" Grid.RowSpan="3" Width="430" Height="430" Margin="15">
+            <Grid x:Name="Binggogrid" Grid.RowSpan="3" Width="410" Height="410" Margin="10 10 0 10">
 <!--<Button x:Name="number1_btn" Click="number_btn_Click" IsEnabled="False"/>
                 <Button x:Name="number2_btn" Click="number_btn_Click" IsEnabled="False"/>
                 <Button x:Name="number3_btn" Click="number_btn_Click" IsEnabled="False"/>
